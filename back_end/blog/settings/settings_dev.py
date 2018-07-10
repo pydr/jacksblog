@@ -92,10 +92,10 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '35.200.105.154',  # 数据库主机
-        'PORT': 3309,  # 数据库端口
-        'USER': 'blog',  # 数据库用户名
-        'PASSWORD': 'blog',  # 数据库用户密码
+        'HOST': '192.168.32.133',  # 数据库主机
+        'PORT': 3306,  # 数据库端口
+        'USER': 'root',  # 数据库用户名
+        'PASSWORD': 'since2018',  # 数据库用户密码
         'NAME': 'blog'  # 数据库名字
     }
 }
@@ -104,7 +104,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://35.200.105.154:6379/0",
+        "LOCATION": "redis://192.168.32.133:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -204,4 +204,5 @@ CKEDITOR_CONFIGS = {
         # 'width': 300,  # 编辑器宽
     },
 }
-CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所以此处设为''
+CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "media")  # 上传图片保存路径，使用了FastDFS，所以此处设为''
+
