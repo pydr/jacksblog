@@ -150,3 +150,27 @@ if ( typeof define === 'function' && define.amd ) {
     triggerBttn.addEventListener( 'click', toggleOverlay );
     closeBttn.addEventListener( 'click', toggleOverlay );
 })();
+
+
+var vm = new Vue({
+    el: "#app",
+    data: {
+        writings: [],
+    },
+
+    mounted: function(){
+	    this.get_content();
+    },
+
+    methods: {
+        get_content: function(){
+            axios.get('http://127.0.0.1:8000/writings/', {
+                responseType: 'json',
+            }).then(response=>{
+                this.writings = response.data;
+            }).catch(error=>{
+                alert("error!")
+            })
+        }
+    }
+});
