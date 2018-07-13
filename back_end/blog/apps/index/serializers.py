@@ -17,4 +17,6 @@ class WritingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Writing
         fields = "__all__"
+        depth = 1
+
 
