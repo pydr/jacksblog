@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Black &amp; White</title>
+
+		<!-- meta -->
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	    <!-- css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/ionicons.min.css">
+		<link rel="stylesheet" href="css/pace.css">
+	    <link rel="stylesheet" href="css/custom.css">
+
+	    <!-- js -->
+	    <script src="js/jquery-2.1.3.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="js/pace.min.js"></script>
+	    <script src="js/modernizr.custom.js"></script>
+		<script src="js/vue-2.5.16.js"></script>
+		<script src="js/axios-0.18.0.min.js"></script>
+
+	</head>
+
+	<body id="single">
+		<div class="container">	
+			<header id="site-header">
+				<div class="row">
+					<div class="col-md-4 col-sm-5 col-xs-8">
+						<div class="logo">
+							<h1><a href="index.html"><b>Black</b> &amp; White</a></h1>
+						</div>
+					</div><!-- col-md-4 -->
+					<div class="col-md-8 col-sm-7 col-xs-4">
+						<nav class="main-nav" role="navigation">
+							<div class="navbar-header">
+  								<button type="button" id="trigger-overlay" class="navbar-toggle">
+    								<span class="ion-navicon"></span>
+  								</button>
+							</div>
+
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  								<ul class="nav navbar-nav navbar-right">
+    								<li class="cl-effect-11"><a href="index.html" data-hover="Home">Home</a></li>
+    								<li class="cl-effect-11"><a href="full-width.html" data-hover="Blog">Blog</a></li>
+    								<li class="cl-effect-11"><a href="about.html" data-hover="About">About</a></li>
+    								<li class="cl-effect-11"><a href="contact.html" data-hover="Contact">Contact</a></li>
+  								</ul>
+							</div><!-- /.navbar-collapse -->
+						</nav>
+						<div id="header-search-box">
+							<a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+							<div id="search-form" class="search-form">
+								<form role="search" method="get" id="searchform" action="#">
+									<input type="search" placeholder="Search" required>
+									<button type="submit"><span class="ion-ios-search-strong"></span></button>
+								</form>				
+							</div>
+						</div>
+					</div><!-- col-md-8 -->
+				</div>
+			</header>
+		</div>
+
+		<div class="content-body" id="app">
+			<div class="container">
+				<div class="row">
+					<main class="col-md-8">
+						<article class="post post-1">
+							<header class="entry-header">
+								<h1 class="entry-title">Python中的@property属性</h1>
+								<div class="entry-meta">
+									<span class="post-category"><a href="#">程序员</a></span>
+			
+									<span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">July 11, 2018, 2:43 p.m.</time></a></span>
+			
+									<span class="post-author"><a href="#">admin</a></span>
+			
+									<span class="comments-link"><a href="#">2876577 Comments</a></span>
+								</div>
+							</header>
+							<div class="entry-content clearfix">
+								@property属性是Python中一个比较高级的属性，它是一种用起来像是使用实例属性一样的特殊属性，可以对应某个方法获得其返回值。
+
+Python中@property属性的作用：在property属性内部进行一系列逻辑运算，最终将计算结果返回。
+
+@property属性的的定义和调用需要注意以下几点：
+
+    定义时，在实例方法的基础上添加@property装饰器，被装饰的方法有且仅有一个self参数
+    调用时，无需括号，与调用属性一致
+
+实际应用：
+property的实际应用
+Python
+class Sum(object):
+    def __init__(self, a, b):
+        self.num1 = a
+        self.num2 = b
+
+    @property
+    def result(self):
+        return self.num1 + self.num2
+
+sum = Sum(1, 2)
+result = sum.result
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+	
+class Sum(object):
+    def __init__(self, a, b):
+        self.num1 = a
+        self.num2 = b
+ 
+    @property
+    def result(self):
+        return self.num1 + self.num2
+ 
+sum = Sum(1, 2)
+result = sum.result
+
+ 
+
+经典类与新式类中@property属性的区别：
+
+    经典类中property属性只有一种访问方式，其对应被@property修饰的方法；
+    新式类中property属性有三种访问方式，分别对应三个被@property（获取属性）、方法名.setter（修改属性）、方法名.deleter（删除属性）修饰的方法。
+
+							</div>
+						</article>
+					</main>
+					<aside class="col-md-4">
+						<div class="widget widget-recent-posts">
+							<h3 class="widget-title">Recent Posts</h3>		
+							<ul>
+								<li  v-for="post in recent_post">
+									<a :href="post.id + '.html'">[[ post.title ]]</a>
+								</li>
+							</ul>
+						</div>
+						<div class="widget widget-archives">
+							<h3 class="widget-title">Archives</h3>
+							<ul>
+								<li>
+									<a href="#">November 2014</a>
+								</li>
+								<li>
+									<a href="#">September 2014</a>
+								</li>
+								<li>
+									<a href="#">January 2013</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="widget widget-category">
+							<h3 class="widget-title">Category</h3>
+							<ul>
+								<li v-for="category in categories">
+									<a href="#">[[ category.name ]]</a>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+		<footer id="site-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copyright">&copy; 2014 ThemeWagon.com</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Mobile Menu -->
+		<div class="overlay overlay-hugeinc">
+			<button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="full-width.html">Blog</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<script src="js/script.js"></script>
+
+	</body>
+</html>
