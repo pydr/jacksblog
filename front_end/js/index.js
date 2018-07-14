@@ -42,35 +42,24 @@ var vm = new Vue({
     el: "#breaking",
     delimiters: ['[[', ']]'],
     data: {
+        host,
         recent_post: [],
-        posts_list: [],
     },
 
     mounted: function(){
 	    this.get_recent_post();
-	    this.get_index_list();
     },
 
     methods: {
 
         get_recent_post: function(){
             // 获取最近更新文章列表
-            axios.get('http://127.0.0.1:8000/recent_posts/', {
+            axios.get(this.host + 'recent_posts/', {
                 responseType: 'json',
             }).then(response=>{
                 this.recent_post = response.data;
             }).catch(error=>{
                 console.log("最近更新加载失败！")
-            })
-        },
-        get_index_list: function(){
-            // 获取首页文章列表
-            axios.get('http://127.0.0.1:8000/posts/', {
-                responseType: 'json',
-            }).then(response=>{
-                this.posts_list = response.data;
-            }).catch(error=>{
-                alert("网络连接超时，请稍后再试~")
             })
         },
 
@@ -83,6 +72,7 @@ var vm2 = new Vue({
     el: "#index",
     delimiters: ['[[', ']]'],
     data: {
+        host,
         posts_list: [],
     },
 
@@ -93,10 +83,51 @@ var vm2 = new Vue({
     methods: {
         get_index_list: function(){
             // 获取首页文章列表
-            axios.get('http://127.0.0.1:8000/posts/', {
+            axios.get(this.host + 'posts/', {
                 responseType: 'json',
             }).then(response=>{
                 this.posts_list = response.data;
+            }).catch(error=>{
+                alert("网络连接超时，请稍后再试~")
+            })
+        },
+
+    }
+});
+
+
+// get Technology & Life list data
+var vm3 = new Vue({
+    el: "#technology",
+    delimiters: ['[[', ']]'],
+    data: {
+        host,
+        tech_list: [],
+        life_list: []
+    },
+
+    mounted: function(){
+	    this.get_tech_list();
+	    this.get_life_list();
+    },
+
+    methods: {
+        get_tech_list: function(){
+            // 获取首页文章列表
+            axios.get(this.host + 'technologies/', {
+                responseType: 'json',
+            }).then(response=>{
+                this.tech_list = response.data;
+            }).catch(error=>{
+                alert("网络连接超时，请稍后再试~")
+            })
+        },
+        get_life_list: function(){
+            // 获取首页文章列表
+            axios.get(this.host + 'life/', {
+                responseType: 'json',
+            }).then(response=>{
+                this.life_list = response.data;
             }).catch(error=>{
                 alert("网络连接超时，请稍后再试~")
             })

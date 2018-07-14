@@ -56,4 +56,24 @@ class WritingDetailView(RetrieveAPIView):
         return self.retrieve(request, pk)
 
 
+class TechnologyListView(APIView):
+    """Tenchnology模块列表页视图"""
+    def get(self, request):
+        queryset = Writing.objects.filter(category_id__exact=1).order_by("-update_time")[:4]
+
+        serializer = WritingSerializer(queryset, many=True)
+
+        return Response(serializer.data)
+
+
+class LifeListView(APIView):
+    """Life 模块列表页视图"""
+    def get(self, request):
+        queryset = Writing.objects.filter(category_id__exact=2).order_by("-update_time")[:4]
+
+        serializer = WritingSerializer(queryset, many=True)
+
+        return Response(serializer.data)
+
+
 
