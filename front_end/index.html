@@ -220,36 +220,37 @@
 							</div>
 						</div>
 						<!-- 首页文章列表 -->
-						<div class="articles" id="index_list">
+						<div class="articles" id="index">
 							<header>
 								<h3 class="title-head">All around the world</h3>
 							</header>
-							<!-- TODO 循环拿不到数据 -->
-							<ul  v-for="post in recent_post">
-								<li class="article">
+							<template v-for="post in posts_list">
+								<div class="article">
 									<div class="article-left">
-										<a href="single.html"><img src="images/article1.jpg"></a>
+										<a :href="post.id + '.html'"><img src="images/article1.jpg"></a>
 									</div>
-									<!--<div class="article-right">-->
-										<!--<div class="article-title">-->
-											<!--<p>On Feb 25, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>104 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>52</a></p>-->
-											<!--<a class="title" href="single.html"> The section of the mass media industry that focuses on presenting</a>-->
-										<!--</div>-->
-										<!--<div class="article-text">-->
-											<!--<p>The standard chunk of Lorem Ipsum used since the 1500s. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" exact original.....</p>-->
-											<!--<a href="single.html"><img src="images/more.png" alt="" /></a>-->
-											<!--<div class="clearfix"></div>-->
-										<!--</div>-->
-									<!--</div>-->
+									<div class="article-right">
+										<div class="article-title">
+											<p>On [[ post.update_time | Date ]] <a class="span_link" :href="'post/' + post.id + '.html'"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>104 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>52</a></p>
+											<a class="title" :href="'post/' + post.id + '.html'">[[ post.title ]]</a>
+										</div>
+										<div class="article-text">
+											<p>[[ post.summary ]]</p>
+											<a :href="'post/' + post.id + '.html'"><img src="images/more.png" alt="" /></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
 									<div class="clearfix"></div>
-								</li>
-							</ul>
+								</div>
+							</template>
 						</div>
+						<!-- TODO Worker&Life -->
 						<div class="sports-top">
+							<!-- Worker -->
 							<div class="s-grid-left">
 								<div class="cricket">
 									<header>
-										<h3 class="title-head">Business</h3>
+										<h3 class="title-head">Worker</h3>
 									</header>
 									<div class="c-sports-main">
 										<div class="c-image">
@@ -305,10 +306,11 @@
 									</div>
 								</div>
 							</div>
+							<!-- Life -->
 							<div class="s-grid-right">
 								<div class="cricket">
 									<header>
-										<h3 class="title-popular">Technology</h3>
+										<h3 class="title-popular">Life</h3>
 									</header>
 									<div class="c-sports-main">
 										<div class="c-image">
@@ -784,7 +786,7 @@
 			$().UItoTop({ easingType: 'easeOutQuart' });
 		});
 		</script>
-		<script src="js/script.js"></script>
+		<script src="js/index.js"></script>
 		<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 		<!---->
 	</body>
