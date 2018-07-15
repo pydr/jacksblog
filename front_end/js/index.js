@@ -135,3 +135,46 @@ var vm3 = new Vue({
 
     }
 });
+
+// side bar function
+var vm4 = new Vue({
+    el: "#side",
+    delimiters: ['[[', ']]'],
+    data: {
+        host,
+        email: "",
+        email_message: "",
+        check: true,
+    },
+    methods: {
+        check_email: function(){
+            var re = /^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$/;
+            if (!this.email) {
+                this.email_message = "请输入Email地址!";
+                this.check = false;
+                return;
+            }else if( !re.test(this.email)){
+                this.email_message = "Email格式不正确！";
+                this.check = false;
+                return;
+            }
+            this.check = true;
+        },
+        doSubmit: function(e){
+            e.preventDefault();
+            this.check_email();
+            if (this.check){
+                axios.post(this.host + "subscribe/", {
+                email: this.email
+                },{
+                    responseType: 'json'
+                },).then(response=>{
+                    this
+                    alert("OK")  // TODO 提交成功
+                }).catch(error=>{
+                    alert("Not Ok")  // TODO 提交失败
+                })
+            }
+        }
+    }
+});
