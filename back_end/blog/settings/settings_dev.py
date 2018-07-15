@@ -206,6 +206,13 @@ LOGGING = {
     }
 }
 
+# django文件存储
+DEFAULT_FILE_STORAGE = 'blog.utils.fastdfs.fdfs_storage.FastDFSStorage'
+
+# FastDFS 文件服务器配置
+FDFS_URL = 'http://hao6.cc:8888/'
+FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'utils/fastdfs/client.conf')
+
 REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'blog.utils.exceptions.exception_handler',
@@ -219,5 +226,5 @@ CKEDITOR_CONFIGS = {
         # 'width': 300,  # 编辑器宽
     },
 }
-CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "media")  # 上传图片保存路径，使用了FastDFS，所以此处设为''
+CKEDITOR_UPLOAD_PATH = os.path.join("")  # 上传图片保存路径，使用了FastDFS，所以此处设为''
 

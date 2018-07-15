@@ -15,6 +15,9 @@ class Category(BaseModel):
         verbose_name = "文章分类"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class Writing(BaseModel):
     """文章模型类"""
@@ -22,6 +25,7 @@ class Writing(BaseModel):
     title = models.CharField(max_length=64, default="无标题", verbose_name="文章标题")
     author = models.CharField(max_length=20, default="admin", verbose_name="作者")
     summary = models.CharField(max_length=500, default="无摘要", verbose_name="摘要")
+    feature_pic = models.ImageField(default="", verbose_name="文章特征图")
     content = RichTextUploadingField(default="", verbose_name="文章正文")
     read_count = models.IntegerField(default=0, verbose_name="阅读量")
     is_delete = models.BooleanField(default=False, verbose_name="是否删除")
@@ -33,16 +37,23 @@ class Writing(BaseModel):
         verbose_name = "文章"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(BaseModel):
     """评论模型类"""
 
     comment_author = models.CharField(max_length=20, verbose_name="评论作者")
-    comment_avatar = models.CharField(max_length=64, default="default.jpg", verbose_name="评论头像")
+    comment_avatar = models.ImageField(default="/group1/M00/00/00/CpIAA1tKscSAOfSlAATk7sl35Mk080.png", verbose_name="用户头像头像")
     is_delete = models.BooleanField(default=False, verbose_name="是否删除")
     writing = models.ForeignKey(Writing, on_delete=models.CASCADE, verbose_name="所属文章")
+    comment_content = models.CharField(max_length=500, default="评论测试", verbose_name="评论")
 
     class Meta:
         db_table = "comments"
         verbose_name = "评论"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.writing.title
