@@ -10,4 +10,7 @@ urlpatterns = [
     path('post/<int:pk>/', views.WritingDetailView.as_view()),
     path('technologies/', views.TechnologyListView.as_view()),
     path('life/', views.LifeListView.as_view()),
+    path('subscribe/', views.SubscribeView.as_view()),
+    path('main_pic/', views.MainPicView.as_view()),
+    path('popular_post/', views.PopularPostView.as_view()),
 ]

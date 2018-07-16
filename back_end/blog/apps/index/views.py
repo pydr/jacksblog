@@ -1,12 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework.generics import GenericAPIView, RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from index.serializers import CategorySerializer, WritingSerializer
-from .models import Category, Writing
+from index.serializers import CategorySerializer, WritingSerializer, SubscribeEmailSerializer, MainPicSerializer
+from .models import Category, Writing, MainPic
 
 
 class CategoryListView(APIView):
@@ -39,7 +39,7 @@ class WritingListView(APIView):
 class RencentPostView(APIView):
     """最近更新列表页"""
     def get(self, request):
-        queryset = Writing.objects.all().order_by("update_time")[:3]
+        queryset = Writing.objects.all().order_by("update_time")[:4]
 
         serializer = WritingSerializer(queryset, many=True)
 
@@ -51,6 +51,7 @@ class WritingDetailView(RetrieveAPIView):
 
     queryset = Writing.objects.all()
     serializer_class = WritingSerializer
+
     def get(self, request, pk):
 
         return self.retrieve(request, pk)
@@ -74,6 +75,37 @@ class LifeListView(APIView):
         serializer = WritingSerializer(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class SubscribeView(CreateAPIView):
+    """文章订阅模块"""
+    serializer_class = SubscribeEmailSerializer
+
+
+class MainPicView(APIView):
+    """首页轮播图视图"""
+    def get(self, request):
+        queryset = MainPic.objects.filter(is_delete__exact=0).order_by("-update_time")
+
+        serializer = MainPicSerializer(queryset, many=True)
+
+        return Response(serializer.data)
+
+
+class PopularPostView(APIView):
+    """最近更新列表页"""
+    def get(self, request):
+        queryset = Writing.objects.all().order_by("-read_count")[:4]
+
+        serializer = WritingSerializer(queryset, many=True)
+
+        return Response(serializer.data)
+
+
+
+
+
+
 
 
 

@@ -59,7 +59,7 @@ var vm = new Vue({
             }).then(response=>{
                 this.recent_post = response.data;
             }).catch(error=>{
-                console.log("最近更新加载失败！")
+                console.log("request recent posts failed")
             })
         },
 
@@ -88,7 +88,7 @@ var vm2 = new Vue({
             }).then(response=>{
                 this.posts_list = response.data;
             }).catch(error=>{
-                alert("网络连接超时，请稍后再试~")
+                console.log("request index posts failed")
             })
         },
 
@@ -119,7 +119,7 @@ var vm3 = new Vue({
             }).then(response=>{
                 this.tech_list = response.data;
             }).catch(error=>{
-                alert("网络连接超时，请稍后再试~")
+                console.log("request failed")
             })
         },
         get_life_list: function(){
@@ -129,7 +129,7 @@ var vm3 = new Vue({
             }).then(response=>{
                 this.life_list = response.data;
             }).catch(error=>{
-                alert("网络连接超时，请稍后再试~")
+                console.log("request failed")
             })
         },
 
@@ -144,17 +144,26 @@ var vm4 = new Vue({
         host,
         email: "",
         email_message: "",
+        message_style: "",
+        popular_post_list: [],
+        recent_posts_list: [],
         check: true,
+    },
+    mounted: function(){
+        this.get_popular_post_list();
+        this.get_recent_posts();
     },
     methods: {
         check_email: function(){
             var re = /^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$/;
             if (!this.email) {
                 this.email_message = "请输入Email地址!";
+                this.message_style = "red";
                 this.check = false;
                 return;
             }else if( !re.test(this.email)){
                 this.email_message = "Email格式不正确！";
+                this.message_style = "red";
                 this.check = false;
                 return;
             }
@@ -169,12 +178,65 @@ var vm4 = new Vue({
                 },{
                     responseType: 'json'
                 },).then(response=>{
-                    this
-                    alert("OK")  // TODO 提交成功
+                    this.email_message = "订阅成功！";
+                    this.message_style = "green";
                 }).catch(error=>{
-                    alert("Not Ok")  // TODO 提交失败
+                    this.email_message = "您已订阅过本站，无需重复订阅";
+                    this.message_style = "red";
                 })
             }
-        }
+        },
+
+        get_popular_post_list: function(){
+            // 获取最受欢迎文章列表
+            axios.get(this.host + 'popular_post/', {
+                responseType: 'json',
+            }).then(response=>{
+                this.popular_post_list = response.data;
+            }).catch(error=>{
+                console.log("request failed")
+            })
+        },
+
+        get_recent_posts: function(){
+            // 获取最近更新文章列表
+            axios.get(this.host + 'recent_posts/', {
+                responseType: 'json',
+            }).then(response=>{
+                this.recent_posts_list = response.data;
+            }).catch(error=>{
+                console.log("request failed")
+            })
+        },
     }
 });
+
+
+// get home page main pic
+var vm5 = new Vue({
+    el: "#slider",
+    delimiters: ['[[', ']]'],
+    data: {
+        host,
+        pic_list: [],
+    },
+
+    mounted: function(){
+	    this.get_pic_list();
+    },
+
+    methods: {
+        get_pic_list: function(){
+            // 获取首页文章列表
+            axios.get(this.host + 'main_pic/', {
+                responseType: 'json',
+            }).then(response=>{
+                this.pic_list = response.data;
+            }).catch(error=>{
+                console.log("request failed")
+            })
+        },
+
+    }
+});
+

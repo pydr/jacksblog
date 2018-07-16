@@ -28,6 +28,7 @@ class Writing(BaseModel):
     feature_pic = models.ImageField(default="", verbose_name="文章特征图")
     content = RichTextUploadingField(default="", verbose_name="文章正文")
     read_count = models.IntegerField(default=0, verbose_name="阅读量")
+    comment_count = models.IntegerField(default=0, verbose_name="评论量")
     is_delete = models.BooleanField(default=False, verbose_name="是否删除")
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="文章分类")
@@ -51,9 +52,44 @@ class Comment(BaseModel):
     comment_content = models.CharField(max_length=500, default="评论测试", verbose_name="评论")
 
     class Meta:
-        db_table = "comments"
+        db_table = "tb_comments"
         verbose_name = "评论"
         verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.writing.title
+
+
+class SubscribeEmail(BaseModel):
+    """订阅用户模型类"""
+    email = models.CharField(max_length=64, verbose_name="订阅邮箱")
+    is_delete = models.BooleanField(default=False, verbose_name="退订")
+
+    class Meta:
+        db_table = "tb_subscribe"
+        verbose_name = "订阅邮箱"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.email
+
+
+class MainPic(BaseModel):
+    """首页伦播图广告"""
+    main_pic = models.ImageField(default="", verbose_name="轮播图")
+    writing = models.ForeignKey(Writing, on_delete=models.CASCADE, verbose_name="文章")
+    is_delete = models.BooleanField(default=False, verbose_name="下架")
+
+    class Meta:
+        db_table = "tb_main_pic"
+        verbose_name = "轮播图"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.writing.title
+
+
+
+
+
+
