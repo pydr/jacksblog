@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from index.serializers import CategorySerializer, WritingSerializer, SubscribeEmailSerializer, MainPicSerializer
-from .models import Category, Writing, MainPic
+from .models import Category, Writing, MainPic, Comment
 
 
 class CategoryListView(APIView):
@@ -93,15 +93,13 @@ class MainPicView(APIView):
 
 
 class PopularPostView(APIView):
-    """最近更新列表页"""
+    """最受欢迎列表页"""
     def get(self, request):
         queryset = Writing.objects.all().order_by("-read_count")[:4]
 
         serializer = WritingSerializer(queryset, many=True)
 
         return Response(serializer.data)
-
-
 
 
 

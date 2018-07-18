@@ -67,4 +67,3 @@ class MainPicSerializer(serializers.ModelSerializer):
 
 
 
-

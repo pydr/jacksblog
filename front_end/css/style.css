@@ -208,11 +208,10 @@ label{
 	padding: 3px 0;
 }
 .copyrights{
-	text-indent:-9999px;
 	height:0;
-	line-height:0;
-	font-size:0;
-	overflow:hidden;
+	line-height:6px;
+	font-size:15px;
+	/*overflow:hidden;*/
 }
 .main-content {
 	padding: 3em 0;
@@ -375,7 +374,7 @@ label{
     float: left;
     margin-right: 6em;
 }
-.marquee2,.marquee3 {
+.marquee2,.marquee3, .marquee4 {
 	margin-right: 6em;
     float: right;
 }
@@ -1890,7 +1889,6 @@ ul.location li:nth-child(2) {
 	color: #979797;
     font-size: 0.95em;
     line-height: 2em;
-	text-transform:lowercase;
 	margin: 0;
 }
 span.glyphicon.glyphicon-map-marker,span.glyphicon.glyphicon-earphone ,.glyphicon.glyphicon-envelope {
@@ -1927,14 +1925,11 @@ ul.location {
 	float:right;
 }
 .copyrights p {
-    color: #979797;
+    color: #959595;
     font-size: 0.9em;
 	margin-top: 0.8em;
 }
-.copyrights p a {
-	color:#84754e;
-	margin-left:2px;
-}
+
 .footer-social-icons ul li {
 	display:inline-block;
 	margin:0 0.2em;
@@ -2962,7 +2957,7 @@ address a:hover {
 		font-size: 2em;
 	}
 	.copyrights {
-		float: none;
+		float: left;
 		text-align: Center;
 	}
 	.footer-social-icons {
