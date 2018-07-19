@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework.generics import RetrieveAPIView, CreateAPIView
+from rest_framework.filters import OrderingFilter
+from rest_framework.generics import RetrieveAPIView, CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,6 +29,7 @@ class CategoryListView(APIView):
 
 class WritingListView(APIView):
     """文章列表页"""
+    pagination_class = None
     def get(self, request):
         queryset = Writing.objects.all().order_by("read_count")[:5]
 
@@ -100,6 +102,21 @@ class PopularPostView(APIView):
         serializer = WritingSerializer(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class BlogListView(ListAPIView):
+    """blog 列表页视图"""
+    serializer_class = WritingSerializer
+    filter_backends = (OrderingFilter,)
+    ordering_fields = ('update_time', )
+
+    def get_queryset(self):
+        return Writing.objects.all()
+
+
+
+
+
 
 
 

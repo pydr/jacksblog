@@ -13,4 +13,5 @@ urlpatterns = [
     path('subscribe/', views.SubscribeView.as_view()),
     path('main_pic/', views.MainPicView.as_view()),
     path('popular_post/', views.PopularPostView.as_view()),
+    path('blog/post', views.BlogListView.as_view()),
 ]

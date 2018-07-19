@@ -216,6 +216,7 @@ FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'utils/fastdfs/client.conf')
 REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'blog.utils.exceptions.exception_handler',
+    'DEFAULT_PAGINATION_CLASS': 'blog.utils.pagination.StandardResultsSetPagination',
 }
 
 # 富文本编辑器ckeditor配置

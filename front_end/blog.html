@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-	    <title>Blog | {{ title }}</title>
-	    <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <head>
+	    <title>Home</title>
+	    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	    <script src="../js/jquery.min.js"></script>
+	    <script src="js/jquery.min.js"></script>
 	    <!-- Custom Theme files -->
-	    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+	    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	    <!-- Custom Theme files -->
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	    <meta name="keywords" content="" />
+	    <meta name="keywords" content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 	    <script type="application/x-javascript">
 	    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 
 	    function hideURLbar() { window.scrollTo(0, 1); }
 	    </script>
 	    <!-- for bootstrap working -->
-	    <script type="text/javascript" src="../js/bootstrap.js"></script>
+	    <script type="text/javascript" src="js/bootstrap.js"></script>
 	    <!-- //for bootstrap working -->
 	    <!-- web-fonts -->
 	    <link href='https://cdn.baomitu.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 	    <link href='https://cdn.baomitu.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-	    <script src="../js/responsiveslides.min.js"></script>
-	    <script src="../js/vue-2.5.16.js"></script>
-	    <script src="../js/axios-0.18.0.min.js"></script>
-		<script src="../js/hosts.js"></script>
+	    <script src="js/responsiveslides.min.js"></script>
+	    <script src="js/vue-2.5.16.js"></script>
+	    <script src="js/axios-0.18.0.min.js"></script>
+		<script src="js/hosts.js"></script>
 	    <script>
 		    $(function() {
 		        $("#slider").responsiveSlides({
@@ -38,8 +39,8 @@
 		        });
 		    });
 	    </script>
-	    <script type="text/javascript" src="../js/move-top.js"></script>
-	    <script type="text/javascript" src="../js/easing.js"></script>
+	    <script type="text/javascript" src="js/move-top.js"></script>
+	    <script type="text/javascript" src="js/easing.js"></script>
 	    <!--/script-->
 	    <script type="text/javascript">
 		    jQuery(document).ready(function($) {
@@ -50,164 +51,118 @@
 		    });
 	    </script>
 	</head>
+    <body>
 
-	<body>
-
-        <div class="header-bottom">
-	            <div class="logo text-center">
-	                <a href="../index.html"><img src="../images/logo.jpg" alt="" /></a>
-	            </div>
-	            <div class="navigation">
-					<nav class="navbar navbar-default" role="navigation">
-						<div class="wrap">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
+    <div class="header-bottom">
+        <div class="logo text-center">
+            <a href="index.html"><img src="images/logo.jpg" alt="" /></a>
+        </div>
+        <div class="navigation">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="wrap">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- 导航栏 -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="album.html">Album</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <div class="search">
+                            <!-- start search-->
+                            <div class="search-box">
+                                <div id="sb-search" class="sb-search">
+                                    <form>
+                                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+                                        <input class="sb-search-submit" type="submit" value="">
+                                        <span class="sb-icon-search"> </span>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- search-scripts -->
+                            <script src="js/classie.js"></script>
+                            <script src="js/uisearch.js"></script>
+                            <script>
+                            new UISearch(document.getElementById('sb-search'));
+                            </script>
+                            <!-- //search-scripts -->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!--/.navbar-collapse-->
+                <!--/.navbar-->
+            </nav>
+        </div>
+	</div>
+	<!-- Breaking News-->
+    <div class="wrap">
+        <div class="move-text">
+            <div class="breaking_news">
+                <h2>Breaking News</h2>
+            </div>
+            <div class="marquee" id="breaking">
+                <div  :class="'marquee' + (index+1)" v-for="(latest_post, index) in recent_post">
+                    <a class="breaking" :href="'post/' + latest_post.id + '.html'">>>[[ latest_post.title ]]</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            <script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+            <script>
+                $('.marquee').marquee({ pauseOnHover: true });
+                //@ sourceURL=pen.js
+            </script>
+        </div>
+    </div>
+	<!-- content-section-starts-here -->
+	<div class="main-body">
+		<div class="wrap">
+		    <ol class="breadcrumb">
+			  <li><a href="index.html">Home</a></li>
+			  <li class="active">Blog</li>
+			</ol>
+			<div class="col-md-8 content-left">
+			<div class="articles sports" id="list">
+					<header>
+						<h3 class="title-head">Blog</h3>
+					</header>
+                    <!-- TODO blog list -->
+                    <template v-for="post in posts_list">
+					    <div class="article">
+						<div class="article-left">
+							<a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic"></a>
+						</div>
+						<div class="article-right">
+							<div class="article-title">
+								<p>On Feb 25, 2015 <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>104 </a><a class="span_link" href="#"><span class="glyphicon glyphicon-thumbs-up"></span>52</a></p>
+								<a class="title" href="single.html"> The section of the mass media industry that focuses on presenting</a>
 							</div>
-                            <!-- 导航栏 -->
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav">
-									<li class="active"><a href="../index.html">Home</a></li>
-									<li><a href="../blog.html">Blog</a></li>
-									<li><a href="../album.html">Album</a></li>
-									<li><a href="../about.html">About</a></li>
-									<div class="clearfix"></div>
-								</ul>
-								<div class="search">
-									<!-- start search-->
-									<div class="search-box">
-										<div id="sb-search" class="sb-search">
-											<form>
-												<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-												<input class="sb-search-submit" type="submit" value="">
-												<span class="sb-icon-search"> </span>
-											</form>
-										</div>
-									</div>
-									<!-- search-scripts -->
-									<script src="../js/classie.js"></script>
-									<script src="../js/uisearch.js"></script>
-									<script>
-									new UISearch(document.getElementById('sb-search'));
-									</script>
-									<!-- //search-scripts -->
-								</div>
+							<div class="article-text">
+								<p>The standard chunk of Lorem Ipsum used since the 1500s. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" exact original.....</p>
+								<a href="single.html"><img src="images/more.png" alt="" /></a>
 								<div class="clearfix"></div>
 							</div>
-						</div>
-						<!--/.navbar-collapse-->
-						<!--/.navbar-->
-					</nav>
-				</div>
-	    </div>
-	    <!-- Breaking News-->
-        <div class="wrap">
-				<div class="move-text">
-					<div class="breaking_news">
-						<h2>Breaking News</h2>
-					</div>
-					<div class="marquee" id="breaking">
-						<div  :class="'marquee' + (index+1)" v-for="(latest_post, index) in recent_post">
-							<a class="breaking" :href="latest_post.id + '.html'">>>[[ latest_post.title ]]</a>
 						</div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="clearfix"></div>
-					<script type="text/javascript" src="../js/jquery.marquee.min.js"></script>
-					<script>
-						$('.marquee').marquee({ pauseOnHover: true });
-						//@ sourceURL=pen.js
-					</script>
+                    </template>
 				</div>
-			</div>
-	    <!-- content-section-starts-here -->
-	    <div class="main-body">
-	        <div class="wrap">
-	            <ol class="breadcrumb">
-	                <li><a href="../index.html">Home</a></li>
-	                <li class="active">{{ title }}</li>
-	            </ol>
-	            <div class="single-page">
-	                <div class="col-md-2 share_grid">
-	                    <h3>SHARE</h3>
-	                    <ul>
-	                        <li>
-	                            <a href="#">
-								<i class="facebook"></i>
-								<div class="views">
-									<span>SHARE</span>
-									<label>180</label>	
-								</div>			
-								<div class="clearfix"></div>
-							</a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-								<i class="twitter"></i>
-								<div class="views">
-									<span>TWEET</span>
-									<label>355</label>	
-								</div>			
-								<div class="clearfix"></div>				
-							</a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-								<i class="linkedin"></i>
-								<div class="views">
-									<span>SHARES</span>
-									<label>28</label>	
-								</div>			
-								<div class="clearfix"></div>								
-							</a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-								<i class="pinterest"></i>
-								<div class="views">
-									<span>PIN</span>
-									<label>16</label>	
-								</div>			
-								<div class="clearfix"></div>				
-							</a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-								<i class="email"></i>
-								<div class="views">
-									<span>Email</span>	
-								</div>			
-								<div class="clearfix"></div>			
-							</a>
-	                        </li>
-	                    </ul>
-	                </div>
-	                <div class="col-md-6 content-left single-post">
-	                    <div class="blog-posts">
-	                        <h3 class="post">{{ title }}</h3>
-                            <p></p>
-                            <p></p>
-	                        <div class="last-article">
-                                <p><img src="http://hao6.cc:8888/{{ feature_pic }}" alt=""></p>
-                                <p></p>
-	                            <p class="artext">{{ summary }}</p>
-	                            <p class="artext">{{ content | safe }}</p>
-	                            <ul class="categories">
-	                                <li><a href="#">{{ category }}</a></li>
-	                            </ul>
-	                            <div class="clearfix"></div>
 
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-4 side-bar" id="side">
-	                    <div class="first_half">
-                            <!-- 订阅模块 -->
-	                        <div class="newsletter">
+			</div>
+			<div class="col-md-4 side-bar" id="side">
+                        <!-- 侧边栏  -->
+						<div class="first_half">
+							<div class="newsletter">
 								<h1 class="side-title-head">Subscribe</h1>
 								<p class="sign">及时获取本站的最新动态！</p>
 								<form>
@@ -216,8 +171,8 @@
                                     <p :style="'color:' + message_style ">[[ email_message ]]</p>
 								</form>
 							</div>
-                            <!-- 侧边选择栏 -->
-	                        <div class="list_vertical">
+							<!-- 侧边栏 -->
+							<div class="list_vertical">
 								<section class="accordation_menu">
 									<div>
 										<input id="label-1" name="lida" type="radio" checked/>
@@ -269,7 +224,7 @@
 									</div>
 								</section>
 							</div>
-	                    </div>
+						</div>
                         <!-- 标签 TODO 标签搜索 -->
 						<div class="secound_half">
 							<div class="tags">
@@ -298,15 +253,14 @@
 								</p>
 							</div>
 						</div>
-	                    <div class="clearfix"></div>
-	                </div>
-	                <div class="clearfix"></div>
-	            </div>
-	        </div>
-	    </div>
-	    <!-- content-section-ends-here -->
-	    <!-- footer-section-starts-here -->
-	    <div class="footer">
+						<div class="clearfix"></div>
+					</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- content-section-ends-here -->
+	<!-- footer-section-starts-here -->
+	<div class="footer">
 				<div class="footer-top">
 					<div class="wrap">
                         <!-- About Us -->
@@ -320,10 +274,10 @@
 						<div class="col-md-2 col-xs-6 col-sm-2 footer-grid">
 							<h4 class="footer-head">Categories</h4>
 							<ul class="cat">
-								<li><a href="../index.html">Home</a></li>
-								<li><a href="../blog.html">Blog</a></li>
-								<li><a href="../Album.html">Album</a></li>
-								<li><a href="../About.html">About</a></li>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="Album.html">Album</a></li>
+								<li><a href="About.html">About</a></li>
 							</ul>
 						</div>
                         <!-- Album -->
@@ -374,23 +328,22 @@
 					</div>
 				</div>
 			</div>
-	    <!-- footer-section-ends-here -->
-	    <script type="text/javascript">
-            $(document).ready(function() {
-                /*
-                var defaults = {
-                wrapID: 'toTop', // fading element id
-                wrapHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-                };
-                */
-                $().UItoTop({ easingType: 'easeOutQuart' });
-	    });
-	    </script>
-        <script src="../js/detail.js"></script>
-	    <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-	    <!---->
-	</body>
-
+	<!-- footer-section-ends-here -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <script src="js/blog.js"></script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!---->
+</body>
 </html>
