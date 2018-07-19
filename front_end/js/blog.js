@@ -67,69 +67,6 @@ var vm = new Vue({
 });
 
 
-// get Home page list data
-var vm2 = new Vue({
-    el: "#list",
-    delimiters: ['[[', ']]'],
-    data: {
-        host,
-        page: 1,
-        limit: 5,
-        ordering: "-update_time",
-        is_get: true,
-        count: 0,
-        posts_list: [],
-    },
-
-    mounted: function(){
-	    //页面滚动加载相关
-        $(window).scroll(function () {
-            // 浏览器窗口高度
-            var showHeight = $(window).height();
-            // 整个网页的高度
-            var pageHeight = $(document).height();
-            // 页面可以滚动的距离
-            var canScrollHeight = pageHeight - showHeight;
-            // 页面滚动了多少,这个是随着页面滚动实时变化的
-            var nowScroll = $(document).scrollTop();
-            if ((canScrollHeight - nowScroll) < 100 && is_get) {
-                // TODO 判断页数，去更新新闻数据
-                this.get_blog_list();
-            }
-        })
-    },
-    methods: {
-        get_blog_list: function () {
-            is_get = false;
-            axios.get(this.host+'/blog/post', {
-                    params: {
-                        page: this.page,
-                        limit: this.limit,
-                        ordering: this.ordering,
-                    },
-                    responseType: 'json'
-                }).then(response => {
-                    this.count = response.data.count;
-                    if(this.count > 0) {
-                        //如果是在请求第一页数据，则直接赋值
-                        //如果是在请求非第一页数据，则拼接
-                        if (this.page == 1) {
-                            this.posts_list = response.data.results;
-                        } else {
-                            this.posts_list = this.posts_list.concat(response.data.results);
-                        }
-                    }
-                    this.page += 1;
-                }).catch(error => {
-                    console.log(error.response.data);
-                });
-                is_get = true;
-        }
-
-    }
-});
-
-
 // side bar function
 var vm4 = new Vue({
     el: "#side",
@@ -204,4 +141,75 @@ var vm4 = new Vue({
         },
     }
 });
+
+
+var page = 0; // 当前页
+var limit = 5;
+var ordering = "-update_time";
+var total_page = 1;  // 总页数
+var data_querying = true;   // 是否正在向后台获取数据
+var is_get=true;
+var host = "http://127.0.0.1:8000/";
+
+$(function () {
+    // get Home page list data
+    vm2 = new Vue({
+        el: "#list",
+        delimiters: ['[[', ']]'],
+        data: {
+            host,
+            posts_list: [],
+        },
+
+    });
+    get_blog_list();
+
+    //页面滚动加载相关
+    $(window).scroll(function () {
+        // 浏览器窗口高度
+        var showHeight = $(window).height();
+        // 整个网页的高度
+        var pageHeight = $(document).height();
+        // 页面可以滚动的距离
+        var canScrollHeight = pageHeight - showHeight;
+        // 页面滚动了多少,这个是随着页面滚动实时变化的
+        var nowScroll = $(document).scrollTop();
+        if ((canScrollHeight - nowScroll) < 100 && is_get) {
+            // TODO 判断页数，去更新新闻数据
+            get_blog_list();
+        }
+    })
+});
+function get_blog_list() {
+    // TODO 更新新闻数据
+    is_get=false;
+    $.get(host + 'blog/post',{
+        //传递要加载第几页的数据
+        page: page + 1,
+        limit: limit,
+        ordering: ordering
+
+    },function (data) {
+        //data==>{news_list:[{},{},...]}
+        //将原数据与新数据拼成一个更大的数据数组
+        //修改当前的页码值
+        if(data.results.length>0) {
+            //如果是在请求第一页数据，则直接赋值
+            //如果是在请求非第一页数据，则拼接
+            page++;
+            if (page == 1) {
+                vm2.posts_list = data.results;
+            } else {
+                vm2.posts_list = vm2.posts_list.concat(data.results);
+            }
+
+            if (data.next == null){
+                is_get = false;
+            }else{
+                is_get = true;
+            }
+        }
+    });
+}
+
 

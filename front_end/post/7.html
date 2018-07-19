@@ -71,8 +71,8 @@
                             <!-- 导航栏 -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="../index.html">Home</a></li>
-									<li><a href="../blog.html">Blog</a></li>
+									<li><a href="../index.html">Home</a></li>
+									<li class="active"><a href="../blog.html">Blog</a></li>
 									<li><a href="../album.html">Album</a></li>
 									<li><a href="../about.html">About</a></li>
 									<div class="clearfix"></div>
@@ -192,7 +192,7 @@
                             <p></p>
                             <p></p>
 	                        <div class="last-article">
-                                <p><img src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO14qAaQo7AALt1CmaBew7016359" alt=""></p>
+                                <p><img style="height: 400px; width: 600px" src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO14qAaQo7AALt1CmaBew7016359" alt=""></p>
                                 <p></p>
 	                            <p class="artext">“对从中国和马来西亚进口的太阳能板征收两年关税。第一年收25%，第二年上半年降至20%，下半年降至15%。”  印度商工部下设外贸总局（Directorate General of Trade Restrictions ，简称DGTR）在向政府提交的报告中提出如上建议。  《印度时报》16日报道称，这一建议符合众多印度国内太阳能制造商的诉求。他们认为，开发商大量进口中国和马来西亚的太阳能板对他们造成了“伤害”。</p>
 	                            <p class="artext"><p><img alt="" src="http://i.guancha.cn/news/mainland/2018/07/17/20180717204035978.jpg" style="height:377px; width:600px" /></p>
@@ -263,10 +263,10 @@
                                                         <template v-for="post in popular_post_list">
 														    <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -287,10 +287,10 @@
                                                         <template v-for="post in recent_posts_list">
                                                             <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -356,8 +356,8 @@
 							<ul class="cat">
 								<li><a href="../index.html">Home</a></li>
 								<li><a href="../blog.html">Blog</a></li>
-								<li><a href="../Album.html">Album</a></li>
-								<li><a href="../About.html">About</a></li>
+								<li><a href="../album.html">Album</a></li>
+								<li><a href="../about.html">About</a></li>
 							</ul>
 						</div>
                         <!-- Album -->

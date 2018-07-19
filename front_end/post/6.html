@@ -71,8 +71,8 @@
                             <!-- 导航栏 -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="../index.html">Home</a></li>
-									<li><a href="../blog.html">Blog</a></li>
+									<li><a href="../index.html">Home</a></li>
+									<li class="active"><a href="../blog.html">Blog</a></li>
 									<li><a href="../album.html">Album</a></li>
 									<li><a href="../about.html">About</a></li>
 									<div class="clearfix"></div>
@@ -192,7 +192,7 @@
                             <p></p>
                             <p></p>
 	                        <div class="last-article">
-                                <p><img src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO1zmAaAYiAACcxKlplQ49576275" alt=""></p>
+                                <p><img style="height: 400px; width: 600px" src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO1zmAaAYiAACcxKlplQ49576275" alt=""></p>
                                 <p></p>
 	                            <p class="artext">US President Donald Trump has said he accepts US intelligence agencies&#39; conclusion that Russia interfered in the 2016 election - despite declining to do so just a day ago.He said he had misspoken on Monday and had meant to say he saw no reason why it was not Russia that meddled.</p>
 	                            <p class="artext"><p>【文/观察者网&nbsp;堵开源】7月17日，俄罗斯国防部网站发表消息，参加&ldquo;坦克两项&rdquo;赛事的中国人民解放军代表队及其装备，经过铁路运输抵达莫斯科附近的阿拉比诺赛场。今年的&ldquo;坦克两项&rdquo;竞赛预计在7月28-8月11日间在阿拉比诺赛场举行。</p>
@@ -271,10 +271,10 @@
                                                         <template v-for="post in popular_post_list">
 														    <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -295,10 +295,10 @@
                                                         <template v-for="post in recent_posts_list">
                                                             <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -364,8 +364,8 @@
 							<ul class="cat">
 								<li><a href="../index.html">Home</a></li>
 								<li><a href="../blog.html">Blog</a></li>
-								<li><a href="../Album.html">Album</a></li>
-								<li><a href="../About.html">About</a></li>
+								<li><a href="../album.html">Album</a></li>
+								<li><a href="../about.html">About</a></li>
 							</ul>
 						</div>
                         <!-- Album -->

@@ -71,8 +71,8 @@
                             <!-- 导航栏 -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="../index.html">Home</a></li>
-									<li><a href="../blog.html">Blog</a></li>
+									<li><a href="../index.html">Home</a></li>
+									<li class="active"><a href="../blog.html">Blog</a></li>
 									<li><a href="../album.html">Album</a></li>
 									<li><a href="../about.html">About</a></li>
 									<div class="clearfix"></div>
@@ -192,7 +192,7 @@
                             <p></p>
                             <p></p>
 	                        <div class="last-article">
-                                <p><img src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO06WALvmtAA6UPud4H804138338" alt=""></p>
+                                <p><img style="height: 400px; width: 600px" src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO06WALvmtAA6UPud4H804138338" alt=""></p>
                                 <p></p>
 	                            <p class="artext">美国总统特朗普过去在新“空军一号”问题上展现出其卓越的谈判技巧，如今又要表现其艺术细胞。据路透社报道称，波音公司已经正式收到为美国政府建造两架新“空军一号”的订单，价值39亿美元。而美国总统特朗普也发表了他对于新专机涂装的意见：他要改变以往的蓝色，浅蓝色和白色涂装，把飞机涂成红、蓝、白三色。</p>
 	                            <p class="artext"><p>美国国防部于7月17日正式宣布了与波音公司签订&ldquo;空军一号&rdquo;合同的消息。后者将负责把两架波音747-8客机改装为新总统专机。准确来说，总统专机是隶属于美国空军的军用运输机，正式型号为VC-25，而且只有在美国总统乘机的时候，它才被称为&ldquo;空军一号&rdquo;</p>
@@ -251,10 +251,10 @@
                                                         <template v-for="post in popular_post_list">
 														    <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -275,10 +275,10 @@
                                                         <template v-for="post in recent_posts_list">
                                                             <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -344,8 +344,8 @@
 							<ul class="cat">
 								<li><a href="../index.html">Home</a></li>
 								<li><a href="../blog.html">Blog</a></li>
-								<li><a href="../Album.html">Album</a></li>
-								<li><a href="../About.html">About</a></li>
+								<li><a href="../album.html">Album</a></li>
+								<li><a href="../about.html">About</a></li>
 							</ul>
 						</div>
                         <!-- Album -->

@@ -55,7 +55,6 @@ class WritingDetailView(RetrieveAPIView):
     serializer_class = WritingSerializer
 
     def get(self, request, pk):
-
         return self.retrieve(request, pk)
 
 

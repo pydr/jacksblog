@@ -71,8 +71,8 @@
                             <!-- 导航栏 -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="../index.html">Home</a></li>
-									<li><a href="../blog.html">Blog</a></li>
+									<li><a href="../index.html">Home</a></li>
+									<li class="active"><a href="../blog.html">Blog</a></li>
 									<li><a href="../album.html">Album</a></li>
 									<li><a href="../about.html">About</a></li>
 									<div class="clearfix"></div>
@@ -192,7 +192,7 @@
                             <p></p>
                             <p></p>
 	                        <div class="last-article">
-                                <p><img src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO0pWAQWBeAAVdxUafMms5246115" alt=""></p>
+                                <p><img style="height: 400px; width: 600px" src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO0pWAQWBeAAVdxUafMms5246115" alt=""></p>
                                 <p></p>
 	                            <p class="artext">多家菲律宾媒体17日引述中国驻菲律宾大使赵鉴华当天的表态称，菲律宾从来不是、也永远不会是中国的一个“省”。他此言是在回应近日菲律宾一些人张贴“中国菲律宾省”横幅的闹剧。菲律宾总统杜特尔特17日也表示，中国从来没有要求菲律宾放弃一平方米领土来换取对菲律宾的援助。</p>
 	                            <p class="artext"><p>&nbsp; &nbsp; &nbsp; &nbsp; 多家菲律宾媒体17日引述中国驻菲律宾大使赵鉴华当天的表态称，菲律宾从来不是、也永远不会是中国的一个&ldquo;省&rdquo;。他此言是在回应近日菲律宾一些人张贴&ldquo;中国菲律宾省&rdquo;横幅的闹剧。菲律宾总统杜特尔特17日也表示，中国从来没有要求菲律宾放弃一平方米领土来换取对菲律宾的援助。</p>
@@ -241,10 +241,10 @@
                                                         <template v-for="post in popular_post_list">
 														    <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -265,10 +265,10 @@
                                                         <template v-for="post in recent_posts_list">
                                                             <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -334,8 +334,8 @@
 							<ul class="cat">
 								<li><a href="../index.html">Home</a></li>
 								<li><a href="../blog.html">Blog</a></li>
-								<li><a href="../Album.html">Album</a></li>
-								<li><a href="../About.html">About</a></li>
+								<li><a href="../album.html">Album</a></li>
+								<li><a href="../about.html">About</a></li>
 							</ul>
 						</div>
                         <!-- Album -->

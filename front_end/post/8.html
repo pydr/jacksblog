@@ -71,8 +71,8 @@
                             <!-- 导航栏 -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="../index.html">Home</a></li>
-									<li><a href="../blog.html">Blog</a></li>
+									<li><a href="../index.html">Home</a></li>
+									<li class="active"><a href="../blog.html">Blog</a></li>
 									<li><a href="../album.html">Album</a></li>
 									<li><a href="../about.html">About</a></li>
 									<div class="clearfix"></div>
@@ -192,7 +192,7 @@
                             <p></p>
                             <p></p>
 	                        <div class="last-article">
-                                <p><img src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO2CaAZ6DUAADLG847YiI4860554" alt=""></p>
+                                <p><img style="height: 400px; width: 600px" src="http://hao6.cc:8888/group1/M00/00/00/CpIAA1tO2CaAZ6DUAADLG847YiI4860554" alt=""></p>
                                 <p></p>
 	                            <p class="artext">据中新网7月13日报道，中国工业和信息化部副部长、国家制造强国建设领导小组办公室主任辛国斌13日在“2018国家制造强国建设专家论坛”上表示，一段时期以来，国内外评价中国制造业发展成就，往往扬长避短，片面夸大成绩。中国制造业创新力不强，核心技术短缺的局面尚未根本改变。</p>
 	                            <p class="artext"><p>据中新网7月13日报道，中国工业和信息化部副部长、国家制造强国建设领导小组办公室主任辛国斌13日在&ldquo;2018国家制造强国建设专家论坛&rdquo;上表示，一段时期以来，国内外评价中国制造业发展成就，往往扬长避短，片面夸大成绩。中国制造业创新力不强，核心技术短缺的局面尚未根本改变。</p>
@@ -247,10 +247,10 @@
                                                         <template v-for="post in popular_post_list">
 														    <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -271,10 +271,10 @@
                                                         <template v-for="post in recent_posts_list">
                                                             <div class="popular-post-grid">
                                                                 <div class="post-img">
-                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                    <a :href="post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
                                                                 </div>
                                                                 <div class="post-text">
-                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <a class="pp-title" :href="post.id + '.html'"> [[ post.title ]]</a>
                                                                     <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -340,8 +340,8 @@
 							<ul class="cat">
 								<li><a href="../index.html">Home</a></li>
 								<li><a href="../blog.html">Blog</a></li>
-								<li><a href="../Album.html">Album</a></li>
-								<li><a href="../About.html">About</a></li>
+								<li><a href="../album.html">Album</a></li>
+								<li><a href="../about.html">About</a></li>
 							</ul>
 						</div>
                         <!-- Album -->
