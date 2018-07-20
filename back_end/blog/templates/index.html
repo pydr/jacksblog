@@ -112,7 +112,7 @@
 					</div>
 					<div class="marquee" id="breaking">
                         {% for post in latest_posts %}
-						<div  class="marquee{{ loop.index }}">
+						<div  class="marquee{{ forloop.counter }}">
 							<a class="breaking" href="post/{{ post.id }}.html">>>{{ post.title }}</a>
 						</div>
                         {% endfor %}
@@ -137,7 +137,7 @@
 								<ul class="rslides" id="slider">
                                     {% for pic in top_pics %}
 									<li>
-										<img src="http://hao6.cc:8888/{{ pic.main_pic }}" alt="">
+										<img style="height: 472px; width: 840px" src="http://hao6.cc:8888/{{ pic.main_pic }}" alt="">
 										<div class="caption">
 											<a href="http://127.0.0.1:8080/post/{{ pic.writing.id }}.html">{{ pic.writing.title }}</a>
 										</div>

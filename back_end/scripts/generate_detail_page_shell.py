@@ -21,6 +21,7 @@ from index.models import Writing
 def generate_detail_page(post_id):
     """生成静态文章详情页面"""
     post = Writing.objects.get(id=post_id)
+    latest_posts = Writing.objects.all().order_by("-update_time")[:4]
     print("开始渲染")
     print(type(post.feature_pic))
     print(post.feature_pic)
@@ -31,7 +32,8 @@ def generate_detail_page(post_id):
         "category": post.category.name,
         "update_time": post.update_time,
         "content": post.content,
-        "feature_pic": post.feature_pic
+        "feature_pic": post.feature_pic,
+        "latest_posts": latest_posts,
     }
 
     # 渲染模板并生成html页面
