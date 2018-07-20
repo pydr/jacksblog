@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-	    <title>Blog</title>
+	<head>
+	    <title>Home</title>
 	    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="js/jquery.min.js"></script>
@@ -50,115 +50,202 @@
 		    });
 	    </script>
 	</head>
-    <body>
 
-    <div class="header-bottom">
-        <div class="logo text-center">
-            <a href="index.html"><img src="images/logo.jpg" alt="" /></a>
-        </div>
-        <div class="navigation">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="wrap">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <!-- 导航栏 -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="blog.html">Blog</a></li>
-                            <li><a href="album.html">Album</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <div class="clearfix"></div>
-                        </ul>
-                        <div class="search">
-                            <!-- start search-->
-                            <div class="search-box">
-                                <div id="sb-search" class="sb-search">
-                                    <form>
-                                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-                                        <input class="sb-search-submit" type="submit" value="">
-                                        <span class="sb-icon-search"> </span>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- search-scripts -->
-                            <script src="js/classie.js"></script>
-                            <script src="js/uisearch.js"></script>
-                            <script>
-                            new UISearch(document.getElementById('sb-search'));
-                            </script>
-                            <!-- //search-scripts -->
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <!--/.navbar-collapse-->
-                <!--/.navbar-->
-            </nav>
-        </div>
-	</div>
-	<!-- Breaking News-->
-    <div class="wrap">
-        <div class="move-text">
-            <div class="breaking_news">
-                <h2>Breaking News</h2>
-            </div>
-            <div class="marquee" id="breaking">
-                <div  :class="'marquee' + (index+1)" v-for="(latest_post, index) in recent_post">
-                    <a class="breaking" :href="'post/' + latest_post.id + '.html'">>>[[ latest_post.title ]]</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-            <script type="text/javascript" src="js/jquery.marquee.min.js"></script>
-            <script>
-                $('.marquee').marquee({ pauseOnHover: true });
-                //@ sourceURL=pen.js
-            </script>
-        </div>
-    </div>
-	<!-- content-section-starts-here -->
-	<div class="main-body">
-		<div class="wrap">
-		    <ol class="breadcrumb">
-			  <li><a href="index.html">Home</a></li>
-			  <li class="active">Blog</li>
-			</ol>
-			<div class="col-md-8 content-left">
-			<div class="articles sports" id="list">
-					<header>
-						<h3 class="title-head">Blog</h3>
-					</header>
-                    <!-- TODO blog list -->
-                    <template v-for="post in posts_list">
-					    <div class="article">
-						<div class="article-left">
-							<a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic"></a>
-						</div>
-						<div class="article-right">
-							<div class="article-title">
-								<p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
-								<a class="title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+	<body>
+			<div class="header-bottom">
+				<div class="logo text-center">
+					<a href="index.html"><img src="images/logo.jpg" alt="" /></a>
+				</div>
+				<div class="navigation">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="wrap">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
 							</div>
-							<div class="article-text">
-								<p>[[ post.summary ]]</p>
-								<a :href="'post/' + post.id + '.html'"><img src="images/more.png" alt="" /></a>
+                            <!-- 导航栏 -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li class="active"><a href="index.html">Home</a></li>
+									<li><a href="blog.html">Blog</a></li>
+									<li><a href="album.html">Album</a></li>
+									<li><a href="about.html">About</a></li>
+									<div class="clearfix"></div>
+								</ul>
+								<div class="search">
+									<!-- start search-->
+									<div class="search-box">
+										<div id="sb-search" class="sb-search">
+											<form>
+												<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+												<input class="sb-search-submit" type="submit" value="">
+												<span class="sb-icon-search"> </span>
+											</form>
+										</div>
+									</div>
+									<!-- search-scripts -->
+									<script src="js/classie.js"></script>
+									<script src="js/uisearch.js"></script>
+									<script>
+									new UISearch(document.getElementById('sb-search'));
+									</script>
+									<!-- //search-scripts -->
+								</div>
 								<div class="clearfix"></div>
 							</div>
 						</div>
-						<div class="clearfix"></div>
-					</div>
-                    </template>
+						<!--/.navbar-collapse-->
+						<!--/.navbar-->
+					</nav>
 				</div>
 
 			</div>
-			<div class="col-md-4 side-bar" id="side">
+			<!-- Breaking News-->
+			<div class="wrap">
+				<div class="move-text">
+					<div class="breaking_news">
+						<h2>Breaking News</h2>
+					</div>
+					<div class="marquee" id="breaking">
+						<div  :class="'marquee' + (index+1)" v-for="(latest_post, index) in recent_post">
+							<a class="breaking" :href="'post/' + latest_post.id + '.html'">>>[[ latest_post.title ]]</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+					<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+					<script>
+						$('.marquee').marquee({ pauseOnHover: true });
+						//@ sourceURL=pen.js
+					</script>
+				</div>
+			</div>
+			<!-- content-section-starts-here -->
+			<div class="main-body">
+				<div class="wrap">
+                    <!-- 主要内容 -->
+					<div class="col-md-8 content-left">
+						<!-- 轮播图 -->
+						<div class="slider">
+							<div class="callbacks_wrap">
+								<ul class="rslides" id="slider">
+									<li v-for="pic in pic_list">
+										<img :src="pic.main_pic" alt="">
+										<div class="caption">
+											<a :href="'post/' + pic.writing.id + '.html'">[[ pic.writing.title ]]</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- 首页文章列表 -->
+						<div class="articles" id="index">
+							<header>
+								<h3 class="title-head">Explain The World</h3>
+							</header>
+							<template v-for="post in posts_list">
+								<div class="article">
+									<div class="article-left">
+										<a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic"></a>
+									</div>
+									<div class="article-right">
+										<div class="article-title">
+											<p>On [[ post.update_time | Date ]] <a class="span_link" :href="'post/' + post.id + '.html'"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" :href="'post/' + post.id + '.html'"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
+											<a class="title" :href="'post/' + post.id + '.html'">[[ post.title ]]</a>
+										</div>
+										<div class="article-text">
+											<p>[[ post.summary ]]</p>
+											<a :href="'post/' + post.id + '.html'"><img src="images/more.png" alt="" /></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</template>
+						</div>
+						<!-- Technology & Life -->
+						<div class="sports-top" id="technology">
+							<!-- Technology -->
+							<div class="s-grid-left">
+								<div class="cricket">
+									<header>
+										<h3 class="title-head">Technology</h3>
+									</header>
+									<template v-for="(page, index) in tech_list">
+										<div class="c-sports-main" v-if="index==0">
+											<div class="c-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" :alt="page.title" /></a>
+											</div>
+											<div class="c-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" href="single.html">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="s-grid-small" v-else>
+											<div class="sc-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" alt="" /></a>
+											</div>
+											<div class="sc-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</template>
+								</div>
+							</div>
+							<!-- Life -->
+							<div class="s-grid-right">
+								<div class="cricket">
+									<header>
+										<h3 class="title-popular">Life</h3>
+									</header>
+									<template v-for="(page, index) in life_list">
+										<div class="c-sports-main" v-if="index==0">
+											<div class="c-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" alt="" /></a>
+											</div>
+											<div class="c-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="s-grid-small" v-else>
+											<div class="sc-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" alt="" /></a>
+											</div>
+											<div class="sc-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</template>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<div class="col-md-4 side-bar" id="side">
                         <!-- 侧边栏  -->
 						<div class="first_half">
 							<div class="newsletter">
@@ -254,12 +341,12 @@
 						</div>
 						<div class="clearfix"></div>
 					</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<!-- content-section-ends-here -->
-	<!-- footer-section-starts-here -->
-	<div class="footer">
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!-- content-section-ends-here -->
+			<!-- footer-section-starts-here -->
+			<div class="footer">
 				<div class="footer-top">
 					<div class="wrap">
                         <!-- About Us -->
@@ -327,22 +414,24 @@
 					</div>
 				</div>
 			</div>
-	<!-- footer-section-ends-here -->
-	<script type="text/javascript">
+		</div>
+		<!-- footer-section-ends-here -->
+		<script type="text/javascript">
 		$(document).ready(function() {
-				/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-				*/
-		$().UItoTop({ easingType: 'easeOutQuart' });
-        });
-    </script>
-    <script src="js/blog.js"></script>
-<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!---->
-</body>
+			/*
+			var defaults = {
+			wrapID: 'toTop', // fading element id
+			wrapHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+			*/
+			$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+		</script>
+		<script src="js/index.js"></script>
+		<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		<!---->
+	</body>
+
 </html>

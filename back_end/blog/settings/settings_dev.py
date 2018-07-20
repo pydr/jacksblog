@@ -51,7 +51,10 @@ INSTALLED_APPS = [
     'ckeditor_uploader',  # 富文本编辑器上传图片模块
 
     # 注册首页模型类
-    'index.apps.IndexConfig'
+    'index.apps.IndexConfig',
+    
+    # 注册相册模型类
+    'album.apps.AlbumConfig',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +115,7 @@ DATABASES = {
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:8080',
+    'cdn.baomitu.com/',
 )
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
