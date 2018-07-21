@@ -3,6 +3,7 @@
 
 	<head>
 	    <title>Home</title>
+        <link rel="shortcut icon" href="images/favicon.ico" />
 	    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="js/jquery.min.js"></script>
@@ -113,7 +114,7 @@
 					<div class="marquee" id="breaking">
                         
 						<div  class="marquee1">
-							<a class="breaking" href="post/2.html">>>新“空军一号”合同正式签订，特朗普要求涂成红蓝白三色</a>
+							<a class="breaking" href="post/7.html">>>印度为保护本国企业，欲征中国太阳能板25%保护性关税</a>
 						</div>
                         
 						<div  class="marquee2">
@@ -121,7 +122,7 @@
 						</div>
                         
 						<div  class="marquee3">
-							<a class="breaking" href="post/7.html">>>印度为保护本国企业，欲征中国太阳能板25%保护性关税</a>
+							<a class="breaking" href="post/2.html">>>新“空军一号”合同正式签订，特朗普要求涂成红蓝白三色</a>
 						</div>
                         
 						<div  class="marquee4">
@@ -219,7 +220,7 @@
 											</div>
 											<div class="c-text">
 												<h6>[[ page.category.name ]]</h6>
-												<a class="power" href="single.html">[[ page.title ]]</a>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
 												<p class="date">On [[ page.update_time | Date ]]</p>
 												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
 												<div class="clearfix"></div>

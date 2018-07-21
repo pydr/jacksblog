@@ -3,6 +3,7 @@
 
 	<head>
 	    <title>Home</title>
+        <link rel="shortcut icon" href="images/favicon.ico" />
 	    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="js/jquery.min.js"></script>
@@ -186,7 +187,7 @@
 											</div>
 											<div class="c-text">
 												<h6>[[ page.category.name ]]</h6>
-												<a class="power" href="single.html">[[ page.title ]]</a>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
 												<p class="date">On [[ page.update_time | Date ]]</p>
 												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
 												<div class="clearfix"></div>

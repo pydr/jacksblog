@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import datetime
 import sys
 
 from django.conf import settings
@@ -22,9 +22,7 @@ def generate_detail_page(post_id):
     """生成静态文章详情页面"""
     post = Writing.objects.get(id=post_id)
     latest_posts = Writing.objects.all().order_by("-update_time")[:4]
-    print("开始渲染")
-    print(type(post.feature_pic))
-    print(post.feature_pic)
+    print("正在渲染页面>> {}.html".format(post_id))
 
     context = {
         "title": post.title,
