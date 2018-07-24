@@ -27,11 +27,16 @@ class Writing(BaseModel):
     summary = models.CharField(max_length=500, default="无摘要", verbose_name="摘要")
     feature_pic = models.ImageField(default="", verbose_name="文章特征图")
     content = RichTextUploadingField(default="", verbose_name="文章正文")
-    read_count = models.IntegerField(default=0, verbose_name="阅读量")
+    read_count = models.PositiveIntegerField(default=0, verbose_name="阅读量")
     comment_count = models.IntegerField(default=0, verbose_name="评论量")
     is_delete = models.BooleanField(default=False, verbose_name="是否删除")
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="文章分类")
+
+    # 增加阅读数
+    def increase_read_count(self):
+        self.read_count += 1
+        self.save(update_fields=["read_count"])
 
     class Meta:
         db_table = "tb_writings"

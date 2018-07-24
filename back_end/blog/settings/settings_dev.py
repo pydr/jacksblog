@@ -68,6 +68,7 @@ MIDDLEWARE = [
 
     # 解决浏览器跨域访问问题
     'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'blog.urls'
