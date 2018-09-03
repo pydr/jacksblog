@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	    <title>Home</title>
+        <link rel="shortcut icon" href="images/favicon.ico" />
+	    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="js/jquery.min.js"></script>
+	    <!-- Custom Theme files -->
+	    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	    <!-- Custom Theme files -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta name="keywords" content="" />
+	    <script type="application/x-javascript">
+	    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+	    function hideURLbar() { window.scrollTo(0, 1); }
+	    </script>
+	    <!-- for bootstrap working -->
+	    <script type="text/javascript" src="js/bootstrap.js"></script>
+	    <!-- //for bootstrap working -->
+	    <!-- web-fonts -->
+	    <link href='https://cdn.baomitu.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	    <link href='https://cdn.baomitu.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	    <script src="js/responsiveslides.min.js"></script>
+	    <script src="js/vue-2.5.16.js"></script>
+	    <script src="js/axios-0.18.0.min.js"></script>
+		<script src="js/hosts.js"></script>
+	    <script>
+		    $(function() {
+		        $("#slider").responsiveSlides({
+		            auto: true,
+		            nav: true,
+		            speed: 500,
+		            namespace: "callbacks",
+		            pager: true,
+		        });
+		    });
+	    </script>
+	    <script type="text/javascript" src="js/move-top.js"></script>
+	    <script type="text/javascript" src="js/easing.js"></script>
+	    <!--/script-->
+	    <script type="text/javascript">
+		    jQuery(document).ready(function($) {
+		        $(".scroll").click(function(event) {
+		            event.preventDefault();
+		            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+		        });
+		    });
+	    </script>
+	</head>
+
+	<body>
+			<div class="header-bottom">
+				<div class="logo text-center">
+					<a href="index.html"><img src="images/logo.jpg" alt="" /></a>
+				</div>
+				<div class="navigation">
+					<nav class="navbar navbar-default" role="navigation">
+						<div class="wrap">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+                            <!-- 导航栏 -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li class="active"><a href="index.html">Home</a></li>
+									<li><a href="blog.html">Blog</a></li>
+									<li><a href="album.html">Album</a></li>
+									<li><a href="about.html">About</a></li>
+									<div class="clearfix"></div>
+								</ul>
+								<div class="search">
+									<!-- start search-->
+									<div class="search-box">
+										<div id="sb-search" class="sb-search">
+											<form>
+												<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+												<input class="sb-search-submit" type="submit" value="">
+												<span class="sb-icon-search"> </span>
+											</form>
+										</div>
+									</div>
+									<!-- search-scripts -->
+									<script src="js/classie.js"></script>
+									<script src="js/uisearch.js"></script>
+									<script>
+									new UISearch(document.getElementById('sb-search'));
+									</script>
+									<!-- //search-scripts -->
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<!--/.navbar-collapse-->
+						<!--/.navbar-->
+					</nav>
+				</div>
+
+			</div>
+			<!-- Breaking News-->
+			<div class="wrap">
+				<div class="move-text">
+					<div class="breaking_news">
+						<h2>Breaking News</h2>
+					</div>
+					<div class="marquee" id="breaking">
+                        {% for post in latest_posts %}
+						<div  class="marquee{{ forloop.counter }}">
+							<a class="breaking" href="post/{{ post.id }}.html">>>{{ post.title }}</a>
+						</div>
+                        {% endfor %}
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+					<script type="text/javascript" src="js/jquery.marquee.min.js"></script>
+					<script>
+						$('.marquee').marquee({ pauseOnHover: true });
+						//@ sourceURL=pen.js
+					</script>
+				</div>
+			</div>
+			<!-- content-section-starts-here -->
+			<div class="main-body">
+				<div class="wrap">
+                    <!-- 主要内容 -->
+					<div class="col-md-8 content-left">
+						<!-- 轮播图 -->
+						<div class="slider">
+							<div class="callbacks_wrap">
+								<ul class="rslides" id="slider">
+                                    {% for pic in top_pics %}
+									<li>
+										<img style="height: 472px; width: 840px" src="http://hao6.cc:8888/{{ pic.main_pic }}" alt="">
+										<div class="caption">
+											<a href="http://127.0.0.1:8080/post/{{ pic.writing.id }}.html">{{ pic.writing.title }}</a>
+										</div>
+									</li>
+                                    {% endfor %}
+								</ul>
+							</div>
+						</div>
+						<!-- 首页文章列表 -->
+						<div class="articles" id="index">
+							<header>
+								<h3 class="title-head">Explain The World</h3>
+							</header>
+							<template v-for="post in posts_list">
+								<div class="article">
+									<div class="article-left">
+										<a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic"></a>
+									</div>
+									<div class="article-right">
+										<div class="article-title">
+											<p>On [[ post.update_time | Date ]] <a class="span_link" :href="'post/' + post.id + '.html'"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" :href="'post/' + post.id + '.html'"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
+											<a class="title" :href="'post/' + post.id + '.html'">[[ post.title ]]</a>
+										</div>
+										<div class="article-text">
+											<p>[[ post.summary ]]</p>
+											<a :href="'post/' + post.id + '.html'"><img src="images/more.png" alt="" /></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</template>
+						</div>
+						<!-- Technology & Life -->
+						<div class="sports-top" id="technology">
+							<!-- Technology -->
+							<div class="s-grid-left">
+								<div class="cricket">
+									<header>
+										<h3 class="title-head">Technology</h3>
+									</header>
+									<template v-for="(page, index) in tech_list">
+										<div class="c-sports-main" v-if="index==0">
+											<div class="c-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" :alt="page.title" /></a>
+											</div>
+											<div class="c-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="s-grid-small" v-else>
+											<div class="sc-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" alt="" /></a>
+											</div>
+											<div class="sc-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</template>
+								</div>
+							</div>
+							<!-- Life -->
+							<div class="s-grid-right">
+								<div class="cricket">
+									<header>
+										<h3 class="title-popular">Life</h3>
+									</header>
+									<template v-for="(page, index) in life_list">
+										<div class="c-sports-main" v-if="index==0">
+											<div class="c-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" alt="" /></a>
+											</div>
+											<div class="c-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="s-grid-small" v-else>
+											<div class="sc-image">
+												<a :href="'post/' + page.id + '.html'"><img :src="page.feature_pic" alt="" /></a>
+											</div>
+											<div class="sc-text">
+												<h6>[[ page.category.name ]]</h6>
+												<a class="power" :href="'post/' + page.id + '.html'">[[ page.title ]]</a>
+												<p class="date">On [[ page.update_time | Date ]]</p>
+												<a class="reu" :href="'post/' + page.id + '.html'"><img src="images/more.png" alt="" /></a>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</template>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<div class="col-md-4 side-bar" id="side">
+                        <!-- 侧边栏  -->
+						<div class="first_half">
+							<div class="newsletter">
+								<h1 class="side-title-head">Subscribe</h1>
+								<p class="sign">及时获取本站的最新动态！</p>
+								<form>
+									<input type="text" v-model="email" class="text" value="Email Address" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email Address';this.style = 'color: #84754e'}else{this.style = 'color: dodgerblue'}">
+									<input type="submit" @click="doSubmit">
+                                    <p :style="'color:' + message_style ">[[ email_message ]]</p>
+								</form>
+							</div>
+							<!-- 侧边栏 -->
+							<div class="list_vertical">
+								<section class="accordation_menu">
+									<div>
+										<input id="label-1" name="lida" type="radio" checked/>
+										<label for="label-1" id="item1"><i class="ferme"> </i>Popular Posts<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+										<div class="content" id="a1">
+											<div class="scrollbar" id="style-2">
+												<div class="force-overflow">
+													<div class="popular-post-grids">
+                                                        <template v-for="post in popular_post_list">
+														    <div class="popular-post-grid">
+                                                                <div class="post-img">
+                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                </div>
+                                                                <div class="post-text">
+                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+														    </div>
+                                                        </template>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div>
+										<input id="label-2" name="lida" type="radio" />
+										<label for="label-2" id="item2"><i class="icon-leaf" id="i2"></i>Recent Posts<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+										<div class="content" id="a2">
+											<div class="scrollbar" id="style-2">
+												<div class="force-overflow">
+													<div class="popular-post-grids">
+                                                        <template v-for="post in recent_posts_list">
+                                                            <div class="popular-post-grid">
+                                                                <div class="post-img">
+                                                                    <a :href="'post/' + post.id + '.html'"><img :src="post.feature_pic" alt="" /></a>
+                                                                </div>
+                                                                <div class="post-text">
+                                                                    <a class="pp-title" :href="'post/' + post.id + '.html'"> [[ post.title ]]</a>
+                                                                    <p>On [[ post.update_time | Date ]] <a class="span_link" href="#"><span class="glyphicon glyphicon-comment"></span>[[ post.comment_count ]] </a><a class="span_link" href="#"><span class="glyphicon glyphicon-eye-open"></span>[[ post.read_count ]] </a></p>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </template>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+                        <!-- 标签 TODO 标签搜索 -->
+						<div class="secound_half">
+							<div class="tags">
+								<header>
+									<h3 class="title-head">Tags</h3>
+								</header>
+								<p>
+									<a class="tag1" href="#">Python</a>
+									<a class="tag2" href="#">docker</a>
+									<a class="tag3" href="#">Ubuntu</a>
+									<a class="tag4" href="#">Tools</a>
+									<a class="tag5" href="#">Database</a>
+									<a class="tag6" href="#">photography</a>
+									<a class="tag7" href="#">Mac OS</a>
+									<a class="tag8" href="#">Debug</a>
+									<a class="tag9" href="#">front end</a>
+									<a class="tag10" href="#">Django</a>
+									<a class="tag11" href="#">data science</a>
+									<a class="tag12" href="#">scripy</a>
+									<a class="tag13" href="#">Spider</a>
+									<a class="tag14" href="#">Redis</a>
+									<a class="tag15" href="#">Mysql</a>
+									<a class="tag16" href="#">softwave</a>
+									<a class="tag17" href="#">HTTP2.0</a>
+									<a class="tag18" href="#">machine learning</a>
+								</p>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!-- content-section-ends-here -->
+			<!-- footer-section-starts-here -->
+			<div class="footer">
+				<div class="footer-top">
+					<div class="wrap">
+                        <!-- About Us -->
+						<div class="col-md-3 col-xs-6 col-sm-4 footer-grid">
+							<h4 class="footer-head">About Us</h4>
+							<p>Developer | Photographer | Life</p>
+							<p>Sometimes, the key is not to change the world, but to better explain the world.</p>
+                            <p>Lifelong Learning, I Do It.</p>
+						</div>
+                        <!-- Category -->
+						<div class="col-md-2 col-xs-6 col-sm-2 footer-grid">
+							<h4 class="footer-head">Categories</h4>
+							<ul class="cat">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="album.html">Album</a></li>
+								<li><a href="about.html">About</a></li>
+							</ul>
+						</div>
+                        <!-- Album -->
+						<div class="col-md-4 col-xs-6 col-sm-6 footer-grid">
+							<h4 class="footer-head">Make By</h4>
+                            <h2 style="color: rgb(198, 40, 40); font-size: 20px;"><span>Made with ❤ in Shenzhen</span></h2>
+						</div>
+						<div class="col-md-3 col-xs-12 footer-grid">
+							<h4 class="footer-head">Contact Us</h4>
+							<span class="hq">I am here</span>
+							<address>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-map-marker"></span></li>
+									<li>Shenzhen City, Guangdong Province, China</li>
+									<div class="clearfix"></div>
+								</ul>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-earphone"></span></li>
+									<li>+1 518 309 8678</li>
+									<div class="clearfix"></div>
+								</ul>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-envelope"></span></li>
+									<li><a href="mailto:dev@linuxmail.org">dev@linuxmail.org</a></li>
+									<div class="clearfix"></div>
+								</ul>
+							</address>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="wrap">
+						<div class="copyrights col-md-6">
+							<p>Copyright © 2018 CodeNow All Rights Reserved.</p>
+                            <p>Open Source with <a href="https://mit-license.org/">MIT license</a></p>
+						</div>
+						<div class="footer-social-icons col-md-6">
+							<ul>
+								<li><a class="facebook" href="#"></a></li>
+								<li><a class="twitter" href="#"></a></li>
+								<li><a class="flickr" href="#"></a></li>
+								<li><a class="googleplus" href="#"></a></li>
+								<li><a class="dribbble" href="#"></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- footer-section-ends-here -->
+		<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+			wrapID: 'toTop', // fading element id
+			wrapHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+			*/
+			$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+		</script>
+		<script src="js/index.js"></script>
+		<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+		<!---->
+	</body>
+
+</html>
